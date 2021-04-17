@@ -1,0 +1,18 @@
+.titulo{
+    margin: 20px 0px 20px 0px;
+}
+/* Portafilio linna */
+iframe{
+    width: 76%;
+    height: 800px;
+    border: 5px solid #dfac13;
+}
+.link-linna{
+    text-decoration: none;
+    color: #dfac13;
+}
+.link-linna:hover{
+    color: #f0ca55;
+}
+
+/* Estilos para TODO list */
