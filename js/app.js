@@ -1,18 +1,18 @@
-//Contador manual
+//Manual counter
 const container = document.querySelector('.container');
-const digito = document.querySelector('.digito');
-let contador = 0;
+const digit = document.querySelector('.digito');
+let counter = 0;
 
 container.addEventListener('click', (e)=>{
     e.stopPropagation();
     console.log();
     if(e.target.classList.contains('btnAumentar')){
-        contador ++;
-        digito.textContent = contador;
+        counter ++;
+        digit.textContent = counter;
     }
     if(e.target.classList.contains('btnDisminuir')){
-        contador --;
-        digito.textContent = contador;
+        counter --;
+        digit.textContent = counter;
     }
 });
 
@@ -20,18 +20,45 @@ container.addEventListener('click', (e)=>{
 //Todo list
 //Crear boton eliminar al final de los li
 const btnAdd = document.querySelector("#boton-ingreso");
-const miLista = document.querySelector(".miLista");
-btnAdd.addEventListener("click", e =>{
-    addNewElement();
-    
+const myList = document.querySelector(".miLista");
+let txtBox = document.querySelector("#txt-in");
+
+//guardar texto al presionar boton
+btnAdd.addEventListener('click', ()=>{
+    let txt = txtBox.value;
+    if(txt != ''){
+        addList(txt);
+        document.querySelector("#txt-in").value = '';
+    }
 });
 
-function addNewElement(){
-    let li = document.createElement("LI");//crear elemento li
-    let textoCaja = document.getElementById("txt-in").value;//capturar texto usuario
-    let t = document.createTextNode(textoCaja);//crear texto
-    li.appendChild(t);//pasar texto al li
-    if(textoCaja != ''){
-        miLista.appendChild(li);
+//Check li presed
+myList.addEventListener("click", e =>{
+    //check the list
+    if(e.target.classList.contains('li-todo')){
+        e.target.classList.toggle('complete-list');
     }
+    //check trash
+    if(e.target.classList.contains('fa-trash-alt')){
+        e.target.parentNode.remove();
+    }
+});
+
+
+
+//Construct list
+function addList(txt){
+    let createLi = document.createElement("LI");//create li element
+    let content = document.createTextNode(txt);//create li content
+    createLi.appendChild(content);//add content to li
+    createLi.className = "li-todo";
+
+    let createDeleteIcon = document.createElement("i");//create icon element
+    //let createcheckIcon = document.createElement("i");//
+    createDeleteIcon.className = "fas fa-trash-alt";
+    //createcheckIcon.className = "fas fa-check";
+
+    myList.appendChild(createLi);
+    createLi.appendChild(createDeleteIcon);
+    //createLi.appendChild(createcheckIcon);
 }

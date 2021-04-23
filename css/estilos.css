@@ -16,3 +16,27 @@ iframe{
 }
 
 /* Estilos para TODO list */
+#boton-ingreso{
+    border-radius: 50px;
+    background-color: #007700;
+    color: aliceblue;
+    border: none;
+}
+.miLista li{
+    list-style: none;
+}
+.fa-trash-alt, .fa-check{
+    float: right;
+    margin-right: 10px;
+}
+.complete-list{
+    text-decoration: line-through;
+    background-color: #dfac13;
+}
+li{
+    background-color: #ffc107;
+    cursor: pointer;
+}
+li:hover{
+    background-color: #dfac13;
+}
