@@ -1,11 +1,16 @@
+//Profile image
+const img = document.querySelector("#img-avatar");
+img.addEventListener("mouseenter", ()=>{
+    img.classList.toggle("animate__tada");
+});
+
 //Manual counter
-const container = document.querySelector('.container');
+const container = document.querySelector('.counter');
 const digit = document.querySelector('.digito');
 let counter = 0;
 
 container.addEventListener('click', (e)=>{
     e.stopPropagation();
-    console.log();
     if(e.target.classList.contains('btnAumentar')){
         counter ++;
         digit.textContent = counter;
