@@ -5,6 +5,20 @@
   border: 2px solid #dfac13;
   border-radius: 60px;
 }
+.div-subtitle{
+  background-color: rgba(53, 63, 72, 0.6);
+  border-radius: 5px;
+  padding: 8px;
+  margin-top: 10px;
+}
+
+/*Background SVG*/
+.bgsvgUp{
+  background-image: url(/img/polygon-scatter-haikei.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: #212529;
+}
 /*FOOTER*/
 .footer-basic {
   padding: 40px 0;
@@ -70,11 +84,13 @@
 }
 .miLista li {
   list-style: none;
+  padding: 5px;
 }
-.fa-trash-alt,
-.fa-check {
+.fa-trash-alt {
   float: right;
   margin-right: 10px;
+  margin-top: 3px;
+  font-size: 20px;
 }
 .complete-list {
   text-decoration: line-through;

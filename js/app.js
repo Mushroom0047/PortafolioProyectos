@@ -16,7 +16,11 @@ container.addEventListener('click', (e)=>{
         digit.textContent = counter;
     }
     if(e.target.classList.contains('btnDisminuir')){
-        counter --;
+        if(counter > 0){
+            counter--
+        }else{
+            counter = 0;
+        }
         digit.textContent = counter;
     }
 });
@@ -30,12 +34,20 @@ let txtBox = document.querySelector("#txt-in");
 
 //guardar texto al presionar boton
 btnAdd.addEventListener('click', ()=>{
+    addTodoList();
+});
+txtBox.addEventListener('keyup', e =>{
+    if(e.keyCode === 13){
+        addTodoList();
+    }
+});
+function addTodoList(){
     let txt = txtBox.value;
     if(txt != ''){
         addList(txt);
         document.querySelector("#txt-in").value = '';
     }
-});
+}
 
 //Check li presed
 myList.addEventListener("click", e =>{
@@ -49,8 +61,6 @@ myList.addEventListener("click", e =>{
     }
 });
 
-
-
 //Construct list
 function addList(txt){
     let createLi = document.createElement("LI");//create li element
@@ -59,11 +69,8 @@ function addList(txt){
     createLi.className = "li-todo";
 
     let createDeleteIcon = document.createElement("i");//create icon element
-    //let createcheckIcon = document.createElement("i");//
     createDeleteIcon.className = "fas fa-trash-alt";
-    //createcheckIcon.className = "fas fa-check";
 
     myList.appendChild(createLi);
     createLi.appendChild(createDeleteIcon);
-    //createLi.appendChild(createcheckIcon);
 }
