@@ -75,17 +75,19 @@ function addList(txt){
     createLi.appendChild(createDeleteIcon);
 }
 
-// Timer
-const startPom = document.querySelector('.btn-startPom');
-const stopPom = document.querySelector('.btn-stopPom');
-const takeBreak = document.querySelector('.btn-breakPom');
+
+// Pomodoro timer
+const btnStartPom = document.querySelector('.btn-startPom');
+const btnStopPom = document.querySelector('.btn-stopPom');
+const btnTakeBreak = document.querySelector('.btn-breakPom');
 //task
 let taskLabel = document.querySelector('.taskPom');
 const taskInput = document.querySelector('.inputTaskPom');
-const enterTask = document.querySelector('.btn-taskPom');
+const btnEnterTask = document.querySelector('.btn-taskPom');
+const audio = document.querySelector('.ringBell');
 
 //Enter a task
-enterTask.addEventListener('click', ()=>{
+btnEnterTask.addEventListener('click', ()=>{
     addTask();
 });
 taskInput.addEventListener('keyup', e=>{
@@ -105,14 +107,25 @@ const startMinute = 25;
 let cycle = 0;
 let breakTime = 5;
 let time = startMinute * 60;//1500 seg
-
 const countDownEl = document.querySelector('.timer');
+let pomIsPlaying = false;
+let intervalID;
 
 //Start countdown
-startPom.addEventListener('click', e=>{
-    setInterval(updateCountDown, 1000);
+btnStartPom.addEventListener('click', ()=>{
+    if(pomIsPlaying){
+        clearInterval(intervalID);
+        btnStartPom.innerHTML = "Comenzar";
+        document.querySelector('.btn-stopPom').disabled = true;
+        breakTime = 5;
+        pomIsPlaying = false;        
+    }else{
+        intervalID = setInterval(updateCountDown, 1000);
+        btnStartPom.innerHTML = "Pausar"; 
+        document.querySelector('.btn-stopPom').disabled = false;       
+        pomIsPlaying = true;
+    }
 });
-
 
 function updateCountDown(){
     const minutes = Math.floor(time / 60);
@@ -120,7 +133,7 @@ function updateCountDown(){
 
     seconds = seconds <10 ? '0' + seconds : seconds;
 
-    countDownEl.innerHTML = `${minutes}: ${seconds}`;
+    countDownEl.innerHTML = minutes+":"+seconds;
     time--;
 }
 
