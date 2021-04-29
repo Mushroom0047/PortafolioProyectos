@@ -74,3 +74,54 @@ function addList(txt){
     myList.appendChild(createLi);
     createLi.appendChild(createDeleteIcon);
 }
+
+// Timer
+const startPom = document.querySelector('.btn-startPom');
+const stopPom = document.querySelector('.btn-stopPom');
+const takeBreak = document.querySelector('.btn-breakPom');
+//task
+let taskLabel = document.querySelector('.taskPom');
+const taskInput = document.querySelector('.inputTaskPom');
+const enterTask = document.querySelector('.btn-taskPom');
+
+//Enter a task
+enterTask.addEventListener('click', ()=>{
+    addTask();
+});
+taskInput.addEventListener('keyup', e=>{
+    if(e.keyCode === 13){
+        addTask();
+    }
+});
+
+//Add task
+function addTask(){
+    let task  = taskInput.value;
+    taskLabel.innerHTML = task;
+    document.querySelector('.inputTaskPom').value = '';
+}
+
+const startMinute = 25;
+let cycle = 0;
+let breakTime = 5;
+let time = startMinute * 60;//1500 seg
+
+const countDownEl = document.querySelector('.timer');
+
+//Start countdown
+startPom.addEventListener('click', e=>{
+    setInterval(updateCountDown, 1000);
+});
+
+
+function updateCountDown(){
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds <10 ? '0' + seconds : seconds;
+
+    countDownEl.innerHTML = `${minutes}: ${seconds}`;
+    time--;
+}
+
+

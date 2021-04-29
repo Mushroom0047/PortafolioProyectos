@@ -58,7 +58,7 @@
 /* Portafilio linna */
 .iframe-linna {
   width: 76%;
-  height: 400px;
+  height: 600px;
   border: 5px solid #dfac13;
 }
 .link-linna {
@@ -78,13 +78,9 @@
 /* Estilos para TODO list */
 #boton-ingreso {
   border-radius: 50px;
-  background-color: #007700;
+  background-color: #198754;
   color: aliceblue;
   border: none;
-}
-.miLista li {
-  list-style: none;
-  padding: 5px;
 }
 .fa-trash-alt {
   float: right;
@@ -92,14 +88,33 @@
   margin-top: 3px;
   font-size: 20px;
 }
-.complete-list {
-  text-decoration: line-through;
-  background-color: #dfac13;
-}
-.miLista li {
+.li-todo {
   background-color: #ffc107;
   cursor: pointer;
+  list-style: none;
+  padding: 5px;
 }
-.miLista li:hover {
+.li-todo:hover {
   background-color: #dfac13;
 }
+.complete-list {
+  background-color: #dfac13;
+  text-decoration: line-through;
+}
+
+/* Pomodoro */
+.pom-div p, .pom-div h1, .pom-div h4{
+  color: #fff;
+}
+.pom-div{
+  width: 80%;
+  height: 160px;
+}
+.taskPom{
+  margin: 0px 100px;
+  padding: 5px;
+}
+.task-div{
+  background-color: rgba(177, 40, 54, 0.6);
+}
+
