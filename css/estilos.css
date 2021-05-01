@@ -71,7 +71,6 @@
 /*Juegos Game Maker Studio 2*/
 .iframe-games {
   width: 100%;
-  /*height: 177px;*/
   height: auto;
 }
 
@@ -114,7 +113,13 @@
   margin: 0px 100px;
   padding: 5px;
 }
-.task-div{
-  background-color: rgba(177, 40, 54, 0.6);
+.task-div-red{
+  background-color: #c22d3c;
+}
+.task-div-green{
+  background-color: #12633d;
+}
+.fa-sync-alt{
+  cursor: pointer;
 }
 

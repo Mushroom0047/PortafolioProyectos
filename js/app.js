@@ -1,6 +1,6 @@
 //Profile image
 const img = document.querySelector("#img-avatar");
-img.addEventListener("mouseenter", ()=>{
+img.addEventListener("mouseenter", () => {
     img.classList.toggle("animate__tada");
 });
 
@@ -9,16 +9,16 @@ const container = document.querySelector('.counter');
 const digit = document.querySelector('.digito');
 let counter = 0;
 
-container.addEventListener('click', (e)=>{
+container.addEventListener('click', (e) => {
     e.stopPropagation();
-    if(e.target.classList.contains('btnAumentar')){
-        counter ++;
+    if (e.target.classList.contains('btnAumentar')) {
+        counter++;
         digit.textContent = counter;
     }
-    if(e.target.classList.contains('btnDisminuir')){
-        if(counter > 0){
+    if (e.target.classList.contains('btnDisminuir')) {
+        if (counter > 0) {
             counter--
-        }else{
+        } else {
             counter = 0;
         }
         digit.textContent = counter;
@@ -33,36 +33,36 @@ const myList = document.querySelector(".miLista");
 let txtBox = document.querySelector("#txt-in");
 
 //guardar texto al presionar boton
-btnAdd.addEventListener('click', ()=>{
+btnAdd.addEventListener('click', () => {
     addTodoList();
 });
-txtBox.addEventListener('keyup', e =>{
-    if(e.keyCode === 13){
+txtBox.addEventListener('keyup', e => {
+    if (e.keyCode === 13) {
         addTodoList();
     }
 });
-function addTodoList(){
+function addTodoList() {
     let txt = txtBox.value;
-    if(txt != ''){
+    if (txt != '') {
         addList(txt);
         document.querySelector("#txt-in").value = '';
     }
 }
 
 //Check li presed
-myList.addEventListener("click", e =>{
+myList.addEventListener("click", e => {
     //check the list
-    if(e.target.classList.contains('li-todo')){
+    if (e.target.classList.contains('li-todo')) {
         e.target.classList.toggle('complete-list');
     }
     //check trash
-    if(e.target.classList.contains('fa-trash-alt')){
+    if (e.target.classList.contains('fa-trash-alt')) {
         e.target.parentNode.remove();
     }
 });
 
 //Construct list
-function addList(txt){
+function addList(txt) {
     let createLi = document.createElement("LI");//create li element
     let content = document.createTextNode(txt);//create li content
     createLi.appendChild(content);//add content to li
@@ -76,65 +76,5 @@ function addList(txt){
 }
 
 
-// Pomodoro timer
-const btnStartPom = document.querySelector('.btn-startPom');
-const btnStopPom = document.querySelector('.btn-stopPom');
-const btnTakeBreak = document.querySelector('.btn-breakPom');
-//task
-let taskLabel = document.querySelector('.taskPom');
-const taskInput = document.querySelector('.inputTaskPom');
-const btnEnterTask = document.querySelector('.btn-taskPom');
-const audio = document.querySelector('.ringBell');
-
-//Enter a task
-btnEnterTask.addEventListener('click', ()=>{
-    addTask();
-});
-taskInput.addEventListener('keyup', e=>{
-    if(e.keyCode === 13){
-        addTask();
-    }
-});
-
-//Add task
-function addTask(){
-    let task  = taskInput.value;
-    taskLabel.innerHTML = task;
-    document.querySelector('.inputTaskPom').value = '';
-}
-
-const startMinute = 25;
-let cycle = 0;
-let breakTime = 5;
-let time = startMinute * 60;//1500 seg
-const countDownEl = document.querySelector('.timer');
-let pomIsPlaying = false;
-let intervalID;
-
-//Start countdown
-btnStartPom.addEventListener('click', ()=>{
-    if(pomIsPlaying){
-        clearInterval(intervalID);
-        btnStartPom.innerHTML = "Comenzar";
-        document.querySelector('.btn-stopPom').disabled = true;
-        breakTime = 5;
-        pomIsPlaying = false;        
-    }else{
-        intervalID = setInterval(updateCountDown, 1000);
-        btnStartPom.innerHTML = "Pausar"; 
-        document.querySelector('.btn-stopPom').disabled = false;       
-        pomIsPlaying = true;
-    }
-});
-
-function updateCountDown(){
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-
-    seconds = seconds <10 ? '0' + seconds : seconds;
-
-    countDownEl.innerHTML = minutes+":"+seconds;
-    time--;
-}
 
 
