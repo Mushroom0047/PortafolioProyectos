@@ -1,6 +1,11 @@
 .titulo {
   margin-bottom: 20px;
 }
+h1{
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #777;
+}
+
 #img-avatar {
   border: 2px solid #dfac13;
   border-radius: 60px;
