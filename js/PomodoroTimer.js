@@ -28,34 +28,43 @@ function addTask() {
     document.querySelector('.inputTaskPom').value = '';
 }
 
-let startMinute = 0.1;
 let cycleValue = 0;
-let breakTime = 0.1*60;
-let time = startMinute * 60;//1500 seg
+let timePom = 0.1 * 60;//1500 seg
+let timeShortBreak = 0.1 * 60;
+let timeLongBreak = 0.2 * 60;
 const countDownEl = document.querySelector('.timer');
 const countDownBreakEl = document.querySelector('.breakTimer');
 let pomIsPlaying = false;
-let breakIsPlaying = false;
 let intervalID;
 
 //Start countdown
 btnStartPom.addEventListener('click', () => {
-    if (pomIsPlaying) {
+    if (pomIsPlaying) {//Pause
         clearInterval(intervalID);
         btnStartPom.innerHTML = "Comenzar";
         document.querySelector('.btn-stopPom').disabled = true;
         pomIsPlaying = false;
-    } else {
-        bgDivPom.classList.add('bg-danger');
-        bgDivPom.classList.remove('bg-success');
-        bgDivTask.classList.add('task-div-red');
-        bgDivTask.classList.remove('task-div-green');
+    } else {// Play
+        pomStyle("pom");
         intervalID = setInterval(updateCountDown, 1000);
         btnStartPom.innerHTML = "Pausar";
         document.querySelector('.btn-stopPom').disabled = false;
         pomIsPlaying = true;
     }
 });
+
+
+// Take a break
+btnTakeBreak.addEventListener('click', () => {
+    stopTimer();
+    pomStyle("break");
+    //check time   
+});
+function checkBreakTime(){
+    if(cyclePom){
+
+    }
+}
 
 // Stop timer
 btnStopPom.addEventListener('click', () => {
@@ -64,68 +73,51 @@ btnStopPom.addEventListener('click', () => {
 });
 function stopTimer() {
     clearInterval(intervalID);
-    time = 0.1 * 60;
+    timePom = 0.1 * 60;
     btnStopPom.disabled = true;
     btnStartPom.innerHTML = "Comenzar";
+    btnTakeBreak.innerHTML = "Descansar";
     countDownEl.innerHTML = '00:00';
-}
-
-//If time is equal than zero
-function pomcomplete() {
-    audioPom.play();
-    cycleValue++;
-    cyclePom.innerHTML = cycleValue;
 }
 
 // Update pom
 function updateCountDown() {
-    if (time >= 0) {
-        const minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-
+    if (timePom >= 0) {
+        const minutes = Math.floor(timePom / 60);
+        let seconds = timePom % 60;
         seconds = seconds < 10 ? '0' + seconds : seconds;
-
         countDownEl.innerHTML = minutes + ":" + seconds;
-        time--;
+        timePom--;
     } else {
         pomcomplete();
         stopTimer();
     }
 }
-// Update break
-function updateBreakCountDown() {
-    if (breakTime >= 0) {
-        const minutes = Math.floor(breakTime / 60);
-        let seconds = breakTime % 60;
 
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-
-        countDownBreakEl.innerHTML = minutes + ":" + seconds;
-        breakTime--;
-    } else {
-        stopTimer();
-    }
-}
 // Reset cycle conter
 const resetCounter = document.querySelector('.fa-sync-alt');
 resetCounter.addEventListener('click', () => {
     cycleValue = 0;
     cyclePom.innerHTML = cycleValue;
 });
-
-// Take a break
-btnTakeBreak.addEventListener('click', () => {
-    stopTimer();
-    bgDivPom.classList.remove('bg-danger');
-    bgDivPom.classList.add('bg-success');
-    bgDivTask.classList.remove('task-div-red');
-    bgDivTask.classList.add('task-div-green');
-    if(breakIsPlaying){
-
-    }else{
-        intervalID = setInterval(updateBreakCountDown, 1000);
-        document.querySelector('.btn-stopPom').disabled = false;
-        btnTakeBreak.innerHTML = "Pausar"
-        breakIsPlaying = true;
+//If time is equal than zero
+function pomcomplete() {
+    audioPom.play();
+    cycleValue++;
+    cyclePom.innerHTML = cycleValue;
+}
+//Pom style
+function pomStyle(type){
+    if(type === "pom"){
+        bgDivPom.classList.add('bg-danger');
+        bgDivPom.classList.remove('bg-success');
+        bgDivTask.classList.add('task-div-red');
+        bgDivTask.classList.remove('task-div-green');
+    }else if (type === "break"){
+        bgDivPom.classList.remove('bg-danger');
+        bgDivPom.classList.add('bg-success');
+        bgDivTask.classList.remove('task-div-red');
+        bgDivTask.classList.add('task-div-green');
     }
-});
+}
+

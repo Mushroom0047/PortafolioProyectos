@@ -122,7 +122,7 @@
           <div class="col-4">
             <p>Break</p>
             <hr>
-            <h1 class="breakTimer">00:00</h1>
+            <h1 class="breakTimer">05:00</h1>
           </div>
           <div class="col-12 taskBG task-div-red">
             <h4 class="taskPom">Tarea</h4>
@@ -134,14 +134,26 @@
         <div class="col-12">
           <input type="text" placeholder="Ingrese una tarea" class="inputTaskPom">
           <button type="button" class="btn btn-success btn-taskPom">Ingresar</button>
-          <hr>          
-        </div>
-        <div class="col-12 mt-2">
-          <button type="button" class="btn btn-danger btn-startPom">Comenzar</button>
-          <button type="button" class="btn btn-secondary btn-stopPom ms-5" disabled>Parar</button>
-          <button type="button" class="btn btn-success ms-5 btn-breakPom">Tomar un break</button>
+          <hr>
         </div>
       </div>
+      <div class="container">
+        <div class="row">
+          <!-- comenzar button -->
+          <div class="col-4 text-end">
+            <button type="button" class="btn btn-danger btn-startPom">Comenzar</button>
+          </div>
+          <!-- Parar button -->
+          <div class="col-4 text-center">
+            <button type="button" class="btn btn-secondary btn-stopPom " disabled>Parar</button>
+          </div>
+          <!-- Descansar button -->
+          <div class="col-4 text-start">
+            <button type="button" class="btn btn-success btn-breakPom">Descansar</button>
+          </div>
+        </div>
+      </div>
+
       <br>
     </div>
 
