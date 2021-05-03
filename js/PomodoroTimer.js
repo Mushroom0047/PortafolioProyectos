@@ -92,12 +92,12 @@ function updateBreakCountDown(){
         seconds = seconds < 10 ? '0' + seconds : seconds;
         countDownBreakEl.innerHTML = minutes + ":" + seconds;
         timeBreakUse--;
-    } else {        
+    } else {       
+        audioPom.play(); 
         stopBreak();
     }
 }
 function stopBreak(){    
-    audioPom.play();
     btnTakeBreak.disabled = false;
     btnStopPom.disabled = true;
     timeBreakUse = timeShortBreak;
