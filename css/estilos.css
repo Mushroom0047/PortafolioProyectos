@@ -62,7 +62,7 @@ h1{
 
 /* Portafilio linna */
 .iframe-linna {
-  width: 76%;
+  width: 100%;/*76*/
   height: 600px;
   border: 5px solid #dfac13;
 }
