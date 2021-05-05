@@ -16,6 +16,9 @@ h1{
   padding: 8px;
   margin-top: 10px;
 }
+.container{
+  border-radius: 10px 0px 10px 0px;
+}
 
 /*Background SVG*/
 .bgsvgUp{
@@ -126,4 +129,10 @@ h1{
 }
 .fa-sync-alt{
   cursor: pointer;
+}
+
+/* Frases motivacionales */
+.frase-mot{
+  padding: 20px 20px;
+  height: 250spx;
 }

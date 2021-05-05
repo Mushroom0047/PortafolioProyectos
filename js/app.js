@@ -74,9 +74,3 @@ function addList(txt) {
     myList.appendChild(createLi);
     createLi.appendChild(createDeleteIcon);
 }
-// Portfolio linna
-if(screen.width < 600){
-    document.querySelector('.iframe-linna').style.width = '100%';
-}else{
-    document.querySelector('.iframe-linna').style.width = '76%';
-}
